@@ -1,0 +1,1 @@
+select round(LAT_N,4) from ( select ROW_NUMBER() over(order by LAT_N) as rownumber, LAT_N from station ) as test where rownumber = (select round((count(LAT_N)/2)+0.5,0) from station);
